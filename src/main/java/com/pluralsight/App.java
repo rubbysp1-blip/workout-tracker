@@ -16,39 +16,35 @@ public class App {
         do {
             System.out.println();
             System.out.println("=== Home ===");
-            System.out.println("A) Add Movie");
-            System.out.println("B) Browse Movies");
+            System.out.println("W) Work out option");
             System.out.println("X) Exit");
             System.out.print("Enter a command: ");
             command = input.nextLine().trim().toUpperCase();
 
             switch (command) {
-                case "A" -> addMovie();
-                case "B" -> rubWorkoutsScreen();
+                case "W" -> runWorkoutsScreen();
                 case "X" -> System.out.println("Goodbye!");
                 default -> System.out.println("That isn't a command. Try again.");
             }
         } while (!command.equals("X"));
     }
 
-    public static void rubWorkoutsScreen() {
+    public static void runWorkoutsScreen() {
         String command;
         do {
             System.out.println();
-            System.out.println("=== Browse Movies ===");
-            System.out.println("A) All Movies");
-            System.out.println("W) Watched");
-            System.out.println("U) Unwatched");
-            System.out.println("S) Search");
-            System.out.println("H) Home");
+            System.out.println("=== Browse Workouts ===");
+            System.out.println("(A) Display all workouts");
+            System.out.println("(Q) Display quick workouts");
+            System.out.println("(S) Search Workout");
+            System.out.println("(H) Home");
             System.out.print("Enter a command: ");
             command = input.nextLine().trim().toUpperCase();
 
             switch (command) {
-                case "A" -> displayAllMovies();
-                case "W" -> displayWatchedMovies();
-                case "U" -> displayUnwatchedMovies();
                 case "S" -> runSearchScreen();
+                case "A" -> displayAllWorkouts();
+                case "Q" -> displayQuickWorkouts();
                 case "H" -> System.out.println("Back to Home");
                 default -> System.out.println("That isn't a command. Try again.");
             }
@@ -60,16 +56,18 @@ public class App {
         do {
             System.out.println();
             System.out.println("=== Search ===");
-            System.out.println("1) By Title");
-            System.out.println("2) By Year");
             System.out.println("0) Back");
+            System.out.println("(1) Back to Search Menu");
+            System.out.println("(2) Search by name");
+            System.out.println("(3) Search by level");
             System.out.print("Enter a command: ");
             command = input.nextLine().trim().toUpperCase();
 
             switch (command) {
-                case "1" -> searchByTitle();
-                case "2" -> searchByYear();
-                case "0" -> System.out.println("Back to Browse Movies");
+                case "0" -> System.out.println("Back to Home Menu");
+                case "1" -> runSearchScreen();
+                case "2" -> searchByTitle();
+                case "3" -> searchByLevel();
                 default -> System.out.println("That isn't a command. Try again.");
             }
         } while (!command.equals("0"));
@@ -77,45 +75,29 @@ public class App {
 
     // ---------- Actions: do one thing, wait for Enter, then return to the screen ----------
 
-    public static void addMovie() {
-        System.out.print("Title: ");
-        String title = input.nextLine();
-        System.out.print("Year: ");
-        // read the whole line, then turn it into a number
-        int year = Integer.parseInt(input.nextLine());
-
-        System.out.println("Added " + title + " (" + year + ")");
+    public static void displayQuickWorkouts() {
+        System.out.println("Displaying all quick workouts...");
         pressEnterToContinue();
     }
 
-    public static void displayAllMovies() {
-        System.out.println("TODO: display all movies");
-        pressEnterToContinue();
-    }
-
-    public static void displayWatchedMovies() {
-        System.out.println("TODO: display the movies you've watched");
-        pressEnterToContinue();
-    }
-
-    public static void displayUnwatchedMovies() {
-        System.out.println("TODO: display the movies you haven't watched");
+    public static void displayAllWorkouts() {
+        System.out.println("Displaying all workouts...");
         pressEnterToContinue();
     }
 
     public static void searchByTitle() {
-        System.out.print("Title to search for: ");
+        System.out.print("Name of workout to search for: ");
         String title = input.nextLine();
 
-        System.out.println("TODO: display the movies whose title matches " + title);
+        System.out.println("Displaying workout whose name matches " + title);
         pressEnterToContinue();
     }
 
-    public static void searchByYear() {
-        System.out.print("Year to search for: ");
-        int year = Integer.parseInt(input.nextLine());
+    public static void searchByLevel() {
+        System.out.print("Level of workout: ");
+        String year = input.nextLine();
 
-        System.out.println("TODO: display the movies from " + year);
+        System.out.println("Displaying workouts that are level " + year);
         pressEnterToContinue();
     }
 
